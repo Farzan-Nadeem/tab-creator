@@ -26,6 +26,7 @@ tr.tr {
 
 td.option { 
   display: table-cell; 
+  text-align: right;
 }
 
 .textarea { 

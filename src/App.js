@@ -14,6 +14,9 @@ class App extends Component {
 
     this.state = {
       lines: [],
+      capo: "No capo",
+      tabName: "",
+      notes: "",
       tuning:
       {
         0: "E",
@@ -51,6 +54,56 @@ class App extends Component {
     this.setState({ tuning: tuning });
   }
 
+  exportText() { 
+    var tables = document.getElementById("lines").getElementsByTagName("table"); 
+    
+    var text = [];
+    for(var lineCount = 0; lineCount < tables.length; lineCount++) { 
+      var rows = tables[lineCount].rows;
+      
+      var line = ["", "", "", "", "", ""];
+      for(var rowCount = 0; rowCount < rows.length ; rowCount++) { 
+        for(var stringCount = 0; stringCount < 6 ; stringCount++) {  
+          line[stringCount] += rows[rowCount].children[stringCount].firstChild.value;
+        }
+      } 
+      text.push(line.join("\r\n")+"\r\n");
+    }
+ 
+    var fileContents = "Tab Name: " + this.state.tabName + "\r\n" 
+                      + "Capo: "    + this.state.capo    + "\r\n\r\n"
+                      + text.join("\r\n") + "\r\n"
+                      + "Notes: \r\n"
+                      + this.state.notes; 
+
+    this.download(this.state.tabName + ".txt", fileContents);
+  }
+
+  download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+  
+    element.style.display = 'none';
+    document.body.appendChild(element);
+  
+    element.click();
+  
+    document.body.removeChild(element);
+  }
+
+  titleChange(event) { 
+    this.setState({tabName: event.target.value});
+  }
+
+  capoChange(event) { 
+    this.setState({capo: event.target.value});
+  }
+
+  notesChange(event) { 
+    this.setState({notes: event.target.value});
+  }
+
   render() {
     return (
       <div>
@@ -66,11 +119,11 @@ class App extends Component {
             <tbody>
               <tr className="tr"> 
                 <td className="option">Tab Name:</td>
-                <td className="option"><input type="text" value={this.tabName}></input></td>
+                <td className="option"><input type="text" defaultValue={this.state.tabName} onChange={this.titleChange.bind(this)}></input></td>
               </tr>
               <tr className="tr">
                 <td className="option">Capo:</td>
-                <td className="option"><input type="text" defaultValue="No Capo"></input></td>
+                <td className="option"><input type="text" defaultValue={this.state.capo} onChange={this.capoChange.bind(this)}></input></td>
               </tr>
             </tbody>
           </table>
@@ -88,10 +141,15 @@ class App extends Component {
           <br /><br />
           
           <label>Notes:</label> <br />
-          <textarea className="textarea"></textarea>
+          <textarea className="textarea" defaultValue={this.state.notes} onChange={this.notesChange.bind(this)}></textarea>
 
         </div>
 
+          <br /><br />
+          <button onClick={this.exportText.bind(this)}>Export as text</button>
+
+          <br /><br />
+          <br /><br />
       </div>
     );
   }
