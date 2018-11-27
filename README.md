@@ -6,4 +6,5 @@ https://farzan-nadeem.github.io/tab-creator
 
 Or if pulling then navigate to the folder, and run the following
 
-```npm start
+```
+npm start
