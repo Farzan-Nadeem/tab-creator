@@ -4,16 +4,26 @@
     stroke-width: 1; 
     padding-top: 5px;
     z-index: -1;
-}
+} 
 
-.chordEntry { 
-    width: 10px;
+tr { 
+    display: block; 
+    float: left;   
+    white-space: nowrap;
 }
  
-tr { display: block; float: left; }
-th, td { display: block; }
+th, td { 
+    display: block;   
+    white-space: nowrap;
+    text-align: center;
+}
+
+td input {   
+    font-family: monospace;
+}
 
 td input:hover { 
     padding: 0px;
     outline: #333 solid 1px;
 }
+ 

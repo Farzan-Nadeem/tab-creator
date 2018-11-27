@@ -10,16 +10,20 @@ class Line extends Component {
             maxWidth: 2,
             input: this.props.tuning,
             tableRows: [
-                <TR createDefault={true} isTune={true} value={this.props.tuning} />,
-                <TR createDefault={true} value="|" />,
-                <TR className="clearBorder" />
+                <TR onChange={this.updateSize} createDefault={true} isTune={true} value={this.props.tuning} />,
+                <TR onChange={this.updateSize} createDefault={true} value="|" />,
+                <TR onChange={this.updateSize} />
             ]
         }
     }
 
+    updateSize(event) { 
+        event.target.size = event.target.value.length || 1; 
+    } 
+
     createChord() {
         var TRs = this.state.tableRows;
-        TRs.push(<TR />);
+        TRs.push(<TR onChange={this.updateSize} />);
         this.setState({ tableRows: TRs });
 
         this.clearAllBorders();
@@ -62,8 +66,8 @@ class Line extends Component {
 
     clearAllBorders() { 
         var inputs = document.getElementById(this.props.lineNumber + "LineTable").getElementsByTagName("input"); 
-
-        for(var i = 12; i < inputs.length; i++ ) { 
+ 
+        for(var i = 12; i < inputs.length; i++ ) {
             inputs[i].focus(); 
             inputs[i].blur(); 
         } 

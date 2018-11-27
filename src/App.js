@@ -60,12 +60,23 @@ class App extends Component {
         <div className="container">
           <Tuner tuning={this.state.tuning} updateTuning={this.updateTuning.bind(this)} />
           <br />
-
           <hr />
-          <label>Tab Name: </label>
-          <input type="text" value={this.tabName}></input>
-          <br />
 
+          <table>
+            <tbody>
+              <tr className="tr"> 
+                <td className="option">Tab Name:</td>
+                <td className="option"><input type="text" value={this.tabName}></input></td>
+              </tr>
+              <tr className="tr">
+                <td className="option">Capo:</td>
+                <td className="option"><input type="text" defaultValue="No Capo"></input></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <br />
+          
           <div id="lines">
             {this.state.lines}
           </div>
@@ -73,6 +84,11 @@ class App extends Component {
 
           <button onClick={this.addLine.bind(this)}>Add New Line</button>
           <button onClick={this.removeLine.bind(this)}>Remove Line</button>
+
+          <br /><br />
+          
+          <label>Notes:</label> <br />
+          <textarea className="textarea"></textarea>
 
         </div>
 

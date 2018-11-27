@@ -17,3 +17,18 @@
 button, select, input { 
   margin-left: 5px;
 }
+
+tr.tr { 
+  display: table-row;
+  float: none;
+  width: auto;
+}
+
+td.option { 
+  display: table-cell; 
+}
+
+.textarea { 
+  width: 25%;
+  height: 30%;
+}
