@@ -6,6 +6,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 } 
 
+.hr { 
+  margin-top: 15px;
+}
+
 button {  
   overflow: hidden; 
   text-decoration: none;

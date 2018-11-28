@@ -150,7 +150,7 @@ class App extends Component {
           <button onClick={this.hideAllButtons.bind(this)} style={{float:"right"}}>Hide all buttons</button>
 
           <br />
-          <hr />
+          <hr className="hr" />
 
           <table>
             <tbody>
