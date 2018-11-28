@@ -22,7 +22,8 @@ class Tuner extends Component {
     render() {
         return (
             <div>
-                <label>Set Tuning (can't change dynamically): </label> <br />
+                <label>Set Tuning (can't change dynamically): </label> 
+                <br />
                 <form onChange={this.updateTuning.bind(this)}>
                     1: <input className="tuner_input" maxLength="1" onChange={this.updateTuning.bind(this)} value={this.state.tuning[0]} id="0"></input> <br />
                     2: <input className="tuner_input" maxLength="1" onChange={this.updateTuning.bind(this)} value={this.state.tuning[1]} id="1"></input> <br />

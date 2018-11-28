@@ -1,4 +1,4 @@
-A simple app created using React for creating guitar tabs. 
+A simple app made with React for creating guitar tabs
 
 Can be accessed from 
 

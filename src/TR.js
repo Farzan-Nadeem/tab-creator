@@ -15,9 +15,7 @@ class TDE extends Component {
             ele = <td><input onChange={this.props.onChange} onBlur={this.props.onBlur} disabled={this.props.disabled} size="1" style={{ margin: "0px", border:"1px solid " + this.props.borderColor, backgroundColor: "white" }}  ></input></td>
         }
 
-        return( 
-            ele
-        );
+        return ele;
     }
 }
 
@@ -62,9 +60,7 @@ class TR extends Component {
             </tr>;
         }
 
-        return (
-            main
-        );
+        return main;
     }
 }
 

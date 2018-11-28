@@ -44,6 +44,9 @@ class Line extends Component {
         this.clearAllBorders();
     }
 
+    // Can use a toggle function instead
+    // Array.from(document.getElementsByClassName("chordAction")).map(function(item) { item.hidden = !item.hidden });
+    // but I want the modularity to just hide or just show rather than toggle
     hideButtons() {
         document.getElementById(this.props.lineNumber + "C").hidden = true;
         document.getElementById(this.props.lineNumber + "D").hidden = true;
@@ -66,8 +69,8 @@ class Line extends Component {
 
     clearAllBorders() { 
         var inputs = document.getElementById(this.props.lineNumber + "LineTable").getElementsByTagName("input"); 
- 
-        for(var i = 12; i < inputs.length; i++ ) {
+        // The first 12 are the tuning and first bar, can skip those 
+        for(var i = 11; i < inputs.length; i++ ) {
             inputs[i].focus(); 
             inputs[i].blur(); 
         } 
@@ -86,8 +89,8 @@ class Line extends Component {
                 <button id={this.props.lineNumber + "D"} style={{ marginLeft: this.state.maxWidth + "%" }} className="chordAction" onClick={this.deleteChord.bind(this)}>Delete Chord</button>
                 <button id={this.props.lineNumber + "I"} style={{ marginLeft: this.state.maxWidth + "%" }} className="chordAction" onClick={this.insertBar.bind(this)}>Insert Bar</button>
                 <button id={this.props.lineNumber + "B"} style={{ marginLeft: this.state.maxWidth + "%" }} className="chordAction" onClick={this.clearAllBorders.bind(this)}>Clear Borders</button>
-                <button id={this.props.lineNumber + "H"} style={{ marginLeft: this.state.maxWidth + "%" }} className="chordAction" onClick={this.hideButtons.bind(this)}>Hide Buttons</button>
-                <button id={this.props.lineNumber + "S"} style={{ marginLeft: this.state.maxWidth + "%", float: "right" }} className="chordAction" onClick={this.showButtons.bind(this)} hidden>Show</button>
+                <button id={this.props.lineNumber + "H"} style={{ marginLeft: this.state.maxWidth + "%" }} className="chordAction hideButton" onClick={this.hideButtons.bind(this)}>Hide Buttons</button>
+                <button id={this.props.lineNumber + "S"} style={{ marginLeft: this.state.maxWidth + "%", float: "right" }} className="chordAction showButton" onClick={this.showButtons.bind(this)} hidden>Show</button>
             </div>
         );
     }
