@@ -27,6 +27,8 @@ class App extends Component {
         5: "E"
       }
     };
+ 
+    this.addLine()
   }
 
   addLine() {
@@ -63,10 +65,26 @@ class App extends Component {
       
       var line = ["", "", "", "", "", ""];
       for(var rowCount = 0; rowCount < rows.length ; rowCount++) { 
-        for(var stringCount = 0; stringCount < 6 ; stringCount++) {  
-          line[stringCount] += rows[rowCount].children[stringCount].firstChild.value;
-        }
-      } 
+        var row = Array.from(rows[rowCount].children).map(function (item) { return item.firstChild.value});
+
+        var maxlength = Math.max.apply(null, row.map(function (item) { return item.length; } ) );
+          
+        row = row.map(function(item) { 
+          var diff = maxlength- item.length;  
+          if(diff === 0) { 
+            return item; 
+          }
+
+          var initOffset = (new Array(Math.floor(diff/2) + 1)).join(" "); 
+          var postOffset = (new Array(Math.ceil(diff/2) + 1)).join(" "); 
+
+          return initOffset + item + postOffset;
+
+        });
+         
+        line = row.map(function (item, key) { return line[key] + item + " "; });
+        
+      }   
       text.push(line.join("\r\n")+"\r\n");
     }
  
