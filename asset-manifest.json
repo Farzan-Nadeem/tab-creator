@@ -1,13 +1,13 @@
 {
-  "main.css": "/tab-creator/static/css/main.9b870c0d.chunk.css",
-  "main.js": "/tab-creator/static/js/main.1fb52f5f.chunk.js",
-  "main.js.map": "/tab-creator/static/js/main.1fb52f5f.chunk.js.map",
+  "main.css": "/tab-creator/static/css/main.3d7dbb27.chunk.css",
+  "main.js": "/tab-creator/static/js/main.87f39462.chunk.js",
+  "main.js.map": "/tab-creator/static/js/main.87f39462.chunk.js.map",
   "static/js/1.95802d0d.chunk.js": "/tab-creator/static/js/1.95802d0d.chunk.js",
   "static/js/1.95802d0d.chunk.js.map": "/tab-creator/static/js/1.95802d0d.chunk.js.map",
   "runtime~main.js": "/tab-creator/static/js/runtime~main.7bd72c8c.js",
   "runtime~main.js.map": "/tab-creator/static/js/runtime~main.7bd72c8c.js.map",
-  "static/css/main.9b870c0d.chunk.css.map": "/tab-creator/static/css/main.9b870c0d.chunk.css.map",
+  "static/css/main.3d7dbb27.chunk.css.map": "/tab-creator/static/css/main.3d7dbb27.chunk.css.map",
   "index.html": "/tab-creator/index.html",
-  "precache-manifest.69f1e61fd302634016cf9c934b27e3d3.js": "/tab-creator/precache-manifest.69f1e61fd302634016cf9c934b27e3d3.js",
+  "precache-manifest.12abfe5a1b3aba74b55328e437e4b5dc.js": "/tab-creator/precache-manifest.12abfe5a1b3aba74b55328e437e4b5dc.js",
   "service-worker.js": "/tab-creator/service-worker.js"
 }
