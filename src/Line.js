@@ -10,9 +10,9 @@ class Line extends Component {
             maxWidth: 2,
             input: this.props.tuning,
             tableRows: [
-                <TR onChange={this.updateSize} createDefault={true} isTune={true} value={this.props.tuning} />,
-                <TR onChange={this.updateSize} createDefault={true} value="|" />,
-                <TR onChange={this.updateSize} />
+                <TR key="0" onChange={this.updateSize} createDefault={true} isTune={true} value={this.props.tuning} />,
+                <TR key="1" onChange={this.updateSize} createDefault={true} value="|" />,
+                <TR key="2" ind={2} onChange={this.updateSize} />
             ]
         }
     }
@@ -23,11 +23,21 @@ class Line extends Component {
 
     createChord() {
         var TRs = this.state.tableRows;
-        TRs.push(<TR onChange={this.updateSize} />);
+
+        TRs.push(<TR key={TRs.length} ind={TRs.length} onChange={this.updateSize} />);
+         
         this.setState({ tableRows: TRs });
 
-        this.clearAllBorders();
+        this.clearAllBorders(); 
+        
+        setTimeout(this.getFocusOnLatest.bind(this), 50);
     }
+    
+    getFocusOnLatest() {   
+        var str = "I" + (this.state.tableRows.length - 1).toString(); 
+        document.getElementById(str).select();
+    }
+
 
     deleteChord() {
         var TRs = this.state.tableRows;
@@ -39,7 +49,7 @@ class Line extends Component {
 
     insertBar() {
         var TRs = this.state.tableRows;
-        TRs.push(<TR createDefault={true} value="|" />);
+        TRs.push(<TR key={TRs.length} createDefault={true} value="|" />);
         this.setState({ tableRows: TRs });
         this.clearAllBorders();
     }
@@ -84,7 +94,7 @@ class Line extends Component {
                         {this.state.tableRows}
                     </tbody>
                 </table>
-
+                <br />
                 <button id={this.props.lineNumber + "C"} style={{ marginLeft: this.state.maxWidth + "%" }} className="chordAction" onClick={this.createChord.bind(this)}>Create Chord</button>
                 <button id={this.props.lineNumber + "D"} style={{ marginLeft: this.state.maxWidth + "%" }} className="chordAction" onClick={this.deleteChord.bind(this)}>Delete Chord</button>
                 <button id={this.props.lineNumber + "I"} style={{ marginLeft: this.state.maxWidth + "%" }} className="chordAction" onClick={this.insertBar.bind(this)}>Insert Bar</button>

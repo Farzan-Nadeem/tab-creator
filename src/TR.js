@@ -3,16 +3,15 @@ import './Line.css';
 
 class TDE extends Component { 
     render() { 
-        var ele = true; 
-        
+        var ele = true;  
         if(this.props.value !== undefined) { 
-            ele = <td><input onChange={this.props.onChange} onBlur={this.props.onBlur} value={this.props.value} disabled={this.props.disabled} size="1" style={{ margin: "0px", border: "1px solid " + this.props.borderColor, backgroundColor: "white" }} ></input></td>
+            ele = <td><input id={"I" + this.props.ind} onChange={this.props.onChange} onBlur={this.props.onBlur} value={this.props.value} disabled={this.props.disabled} size="1" style={{ margin: "0px", border: "1px solid " + this.props.borderColor, backgroundColor: "white" }} ></input></td>
         } 
         else if(this.props.defaultValue !== undefined) { 
-            ele = <td><input onChange={this.props.onChange} onBlur={this.props.onBlur} defaultValue={this.props.defaultValue} disabled={this.props.disabled} size="1" style={{ margin: "0px", border: "1px solid " + this.props.borderColor, backgroundColor: "white" }} ></input></td>
+            ele = <td><input id={"I" + this.props.ind} onChange={this.props.onChange} onBlur={this.props.onBlur} defaultValue={this.props.defaultValue} disabled={this.props.disabled} size="1" style={{ margin: "0px", border: "1px solid " + this.props.borderColor, backgroundColor: "white" }} ></input></td>
         } 
         else { 
-            ele = <td><input onChange={this.props.onChange} onBlur={this.props.onBlur} disabled={this.props.disabled} size="1" style={{ margin: "0px", border:"1px solid " + this.props.borderColor, backgroundColor: "white" }}  ></input></td>
+            ele = <td><input id={"I" + this.props.ind} onChange={this.props.onChange} onBlur={this.props.onBlur} disabled={this.props.disabled} size="1" style={{ margin: "0px", border:"1px solid " + this.props.borderColor, backgroundColor: "white" }}  ></input></td>
         }
 
         return ele;
@@ -51,7 +50,7 @@ class TR extends Component {
 
         } else {
             main = <tr className="chordEntry">
-                <TDE onChange={this.props.onChange} onBlur={this.clearBorder.bind(this)} defaultValue="-" borderColor="black" disabled={false} />
+                <TDE ind={this.props.ind} onChange={this.props.onChange} onBlur={this.clearBorder.bind(this)} defaultValue="-" borderColor="black" disabled={false} />
                 <TDE onChange={this.props.onChange} onBlur={this.clearBorder.bind(this)} defaultValue="-" borderColor="black" disabled={false} />
                 <TDE onChange={this.props.onChange} onBlur={this.clearBorder.bind(this)} defaultValue="-" borderColor="black" disabled={false} />
                 <TDE onChange={this.props.onChange} onBlur={this.clearBorder.bind(this)} defaultValue="-" borderColor="black" disabled={false} />

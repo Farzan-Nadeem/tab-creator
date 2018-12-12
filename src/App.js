@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Header from "./Header.js";
 import Line from './Line.js';
-import Tuner from './Tuner.js';
+import Tuner from './Tuner.js'; 
 
 import './App.css';
 import './index.css';
@@ -33,11 +33,11 @@ class App extends Component {
   }
 
   addLine() {
-    var newLine = <Line tuning={this.state.tuning} lineNumber={this.state.lines.length} />;
     var oldLines = this.state.lines;
+    var newLine = <Line key={oldLines.length} tuning={this.state.tuning} lineNumber={this.state.lines.length} />;
 
     oldLines.push(newLine);
-    oldLines.push(<br />);
+    oldLines.push(<br key={oldLines.length} />);
 
     this.setState({ lines: oldLines });
   }
@@ -137,6 +137,7 @@ class App extends Component {
   showAllButtons() { 
     Array.from(document.getElementsByClassName("showButton")).map(function(item) { item.click(); });
   }
+  
   render() {
     return (
       <div>
@@ -145,7 +146,8 @@ class App extends Component {
 
         <div className="container">
           <Tuner tuning={this.state.tuning} updateTuning={this.updateTuning.bind(this)} />
-          <br />
+          <br /> 
+          
           <button onClick={this.showAllButtons.bind(this)} style={{float:"right"}}>Show all buttons</button>
           <button onClick={this.hideAllButtons.bind(this)} style={{float:"right"}}>Hide all buttons</button>
 

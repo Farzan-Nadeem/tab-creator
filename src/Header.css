@@ -6,13 +6,13 @@
 
     margin: 0;
 
-    background-color: azure;
+    background-color: #ccffff;
     
-    box-shadow: 0 1px 2px #00000080;  
+    box-shadow: 0 2px 3px #00000080;  
 }
 
 h1 { 
     margin: 0;
     padding-left: 1em;
-    font-weight: 200;
+    font-weight: 300;
 }
