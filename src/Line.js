@@ -12,7 +12,7 @@ class Line extends Component {
             tableRows: [
                 <TR key="0" onChange={this.updateSize} createDefault={true} isTune={true} value={this.props.tuning} />,
                 <TR key="1" onChange={this.updateSize} createDefault={true} value="|" />,
-                <TR key="2" ind={2} onChange={this.updateSize} />
+                <TR key="2" ind={"2" + this.props.lineNumber } onChange={this.updateSize} />
             ]
         }
     }
@@ -24,7 +24,7 @@ class Line extends Component {
     createChord() {
         var TRs = this.state.tableRows;
 
-        TRs.push(<TR key={TRs.length} ind={TRs.length} onChange={this.updateSize} />);
+        TRs.push(<TR key={TRs.length} ind={TRs.length + this.props.lineNumber.toString() } onChange={this.updateSize} />);
          
         this.setState({ tableRows: TRs });
 
@@ -34,7 +34,7 @@ class Line extends Component {
     }
     
     getFocusOnLatest() {   
-        var str = "I" + (this.state.tableRows.length - 1).toString(); 
+        var str = "I" + (this.state.tableRows.length - 1).toString() + this.props.lineNumber.toString();  
         document.getElementById(str).select();
     }
 
